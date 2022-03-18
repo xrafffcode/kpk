@@ -1,0 +1,28 @@
+*{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+.main-theme {
+  min-height: 60vh;
+  color: white;
+}
+
+
+#additionalResult {
+  font-size: 23px;
+}
+
+/*  FRACTIONS STYLE  */
+.f {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+.n {
+    border-bottom: 1px solid white;
+}
+
+#c-tip {
+  display: none;
+}
