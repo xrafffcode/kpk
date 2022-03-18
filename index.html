@@ -58,7 +58,6 @@
 
 
     <script>
-
         let img = document.getElementById('formul_img');
         function typeChange() {
             let imgSrc = (vot.value === 'p') ? "a.png" : "c.png";
@@ -76,10 +75,9 @@
 
                 if (n >= r && n >= 0 && r >= 0) {
                     var nfactorial = 1;
-                    sprendimas.innerHTML = "";
+
                     for (let i = 1; i <= n; i++) {
                         nfactorial = nfactorial * i;
-
                     }
                     var rfactorial = 1;
                     for (let j = 1; j <= r; j++) {
