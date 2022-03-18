@@ -1,68 +1,115 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permutations and Combinations Calculator</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <title>Kombinasi dan Permutasi</title>
+
 </head>
 
 <body style="background-color: #393e46;">
-  <nav class="navbar navbar-dark">
-    <div class="container">
-      <a class="navbar-brand">Kalkulator Permutasi-Kombinasi</a>
-      <div class="d-flex">
-        <img src="images/stematel-wh.png" alt="" width="150" class="img-fluid">
-      </div>
+    <nav class="navbar navbar-dark">
+        <div class="container">
+            <a class="navbar-brand">Kalkulator Permutasi-Kombinasi</a>
+            <div class="d-flex">
+                <img src="images/stematel-wh.png" alt="" width="150" class="img-fluid">
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container mt-2 text-white">
+        <div class="mt-3">
+            <label class="form-label">Pilih Rumus:</label>
+            <select class="form-select" id="vot" onchange="typeChange()">
+                <option value="p">Permutasi </option>
+                <option value="c">Kombinasi</option>
+            </select>
+        </div>
+        <image id="formul_img" src="images/a.png" alt="formule" class="mt-3"></image>
+        <p class="text-danger mt-2">*N harus lebih besar dari atau sama dengan K</p>
+        <div class="mb-3">
+            <label class="form-label">N:</label>
+            <input type="number" class="form-control" min="1" id="n" placeholder="N" value="1" onchange="recalc()">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">K:</label>
+            <input type="number" class="form-control" min="1" id="r" placeholder="r" value="1" onchange="recalc()">
+        </div>
+        <div class="d-grid gap-2">
+            <button type="button" onclick="getresult()" class="btn btn-primary">Get result</button>
+        </div>
+        <div class="mt-5">
+            <label class="fprm-label">Hasil</label>
+            <input class="form-control text-danger mt-3" id="result" disabled value=""></in>
+        </div>
+
     </div>
-  </nav>
-  <div class="container main-theme mt-5">
-
-
-    <div class="mt-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Pilih Rumus:</label>
-      <select class="form-select" id="type" onchange="typeChange()">
-        <option value="A">Permutasi</option>
-        <option value="C">Kombinasi</option>
-      </select>
-    </div>
-    <br>
-    <image id="formul_img" src="images/a.png" alt="formule" class="mb-2">
-      <p id="a-tip" class="text-danger">*N harus lebih besar dari atau sama dengan K</p>
-      <p id="c-tip" class="text-danger">*N harus lebih besar dari atau sama dengan K</p>
-
-      <div class="mb-3">
-        <label class="form-label">N:</label>
-        <input type="number" class="form-control" min="1" id="n" placeholder="N" value="1" onchange="recalc()">
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label">K:</label>
-        <input type="number" class="form-control" min="1" id="k" placeholder="K" value="1" onchange="recalc()">
-      </div>
 
 
 
-      <h2>Hasil</h2>
-      <input type="text" class="form-control text-danger" id="result" disabled>
-      <span id="additionalResult"></span>
+    <script>
 
-      <h2 class="mt-2">Solusi</h2>
-      <div id="sprendimas">
+        let img = document.getElementById('formul_img');
+        function typeChange() {
+            let imgSrc = (vot.value === 'p') ? "a.png" : "c.png";
+            img.src = "images/" + imgSrc;
 
-      </div>
-  </div>
+        }
 
-  <script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+        function getresult() {
+            var n = document.getElementById('n').value;
+            var r = document.getElementById('r').value;
+
+            var value = document.getElementById('vot').value;
+
+            if (value !== "select") {
+
+                if (n >= r && n >= 0 && r >= 0) {
+                    var nfactorial = 1;
+                    sprendimas.innerHTML = "";
+                    for (let i = 1; i <= n; i++) {
+                        nfactorial = nfactorial * i;
+
+                    }
+                    var rfactorial = 1;
+                    for (let j = 1; j <= r; j++) {
+                        rfactorial = rfactorial * j;
+                    }
+                    var nrfactorial = 1;
+                    for (let k = 1; k <= (n - r); k++) {
+                        nrfactorial = nrfactorial * k;
+                    }
+
+                    var result;
+
+
+                    if (value == "p") {
+                        result = nfactorial / nrfactorial;
+                    } else {
+                        result = nfactorial / (rfactorial *
+                            nrfactorial);
+                    }
+                } else {
+                    result = 0;
+                }
+
+            } else {
+                result = "Select the operation";
+            }
+
+            document.getElementById('result').value = result;
+        }
+    </script>
 </body>
 
 </html>
